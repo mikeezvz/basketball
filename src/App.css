@@ -55,9 +55,22 @@ img {
   height: 18em;
   width: 18em;
 }
+.score{
+  font-family: Impact;
+  font-size: 2em;
+  text-transform: uppercase;
+}
 
 .teamname{
   font-family: Impact;
   font-size: 3em;
   text-transform: uppercase;
+}
+
+ul{
+  list-style-type: none;
+}
+
+li{
+  line-height: 3em;
 }

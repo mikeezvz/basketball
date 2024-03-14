@@ -5,6 +5,7 @@ import { useState } from "react";
 
 
 function App() {
+    const [events, setEvents] = useState([]);
     var [teamname1, setTeamname1] = useState("");
     var [teamname2, setTeamname2] = useState("");
     const [scoreTeam1, setScoreTeam1] = useState(0);
@@ -57,6 +58,7 @@ if (scoreTeam1 === 12) {
     setScoreTeam1(0)
     setScoreTeam2(0)
     setIsThrown(0)
+    setEvents([])
 }
 if (progress === 100) {
     setProgress(0)
@@ -67,6 +69,7 @@ if (progress === 100) {
         setScoreTeam1(0)
         setScoreTeam2(0)
         setIsThrown(0)
+        setEvents([])
     }
     if (progress1 === 100) {
         setProgress1(0)
@@ -82,9 +85,11 @@ if (progress === 100) {
                 console.log("Treffer für Team 1! Punktestand: " + (scoreTeam1 + 3)); // Ausgabe für die Konsole
                 if (progress + 25 <= 100) {
                     setProgress(progress + 25);
+                    setEvents([...events, `Punkt für Team 1`]);
                 }
             } else {
                 console.log("Kein Treffer für Team 1! Punktestand: " + scoreTeam1); // Ausgabe für die Konsole
+                setEvents([...events, `Team 1 trifft nicht`]);
             }
             setIsThrown(isThrown+1)
         }
@@ -99,9 +104,11 @@ if (progress === 100) {
                     console.log("Treffer für Team 2! Punktestand: " + (scoreTeam2 + 3)); // Ausgabe für die Konsole
                     if (progress1 + 25 <= 100) {
                         setProgress1(progress1 + 25);
+                        setEvents([...events, `Punkt für Team 2`]);
                     }
                 } else {
                     console.log("Kein Treffer für Team 2! Punktestand: " + scoreTeam2); // Ausgabe für die Konsole
+                    setEvents([...events, `Team 2 trifft nicht`]);
                 }
                 setIsThrown(isThrown-1)
             }
@@ -115,7 +122,7 @@ if (progress === 100) {
             </head>
             <div className="grid-container">
                 <div className="grid-item">
-                    Team 1: {teamname1} - {scoreTeam1} points
+                    <p class="score">{scoreTeam1} points</p>
                     </div>
                 <div className="grid-item">
                     <h1>
@@ -123,7 +130,7 @@ if (progress === 100) {
                     </h1>
                     </div>
                 <div className="grid-item">
-                    Team 2: {teamname2} - {scoreTeam2} point
+                    <p class="score">{scoreTeam2} points</p>
                 </div>
                 <div className="grid-item">
             <form onSubmit={handleSubmit}>
@@ -173,6 +180,8 @@ if (progress === 100) {
                     </button>
                     <br/>
                     <br/>
+                    <br/>
+                    <br/>
                     <p class="teamname">{teamname2}</p>
                 </div>
                 <div className="grid-item">
@@ -200,7 +209,13 @@ if (progress === 100) {
                 <div className="grid-item">
                     <img src="/img/lone_wolf_tree.png"/>
                 </div>
-                <div className="grid-item"></div>
+                <div className="grid-item">
+                    <ul>
+                    {events.map((event, index) => (
+                        <li key={index}>{event}</li>
+                    ))}
+                </ul>
+                </div>
                 <div className="grid-item"><img src="/img/lone_wolf_motorcycle.jpg"/></div>
             </div>
             </body>
