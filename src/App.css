@@ -2,17 +2,6 @@
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
 .App-header {
   background-color: #282c34;
   min-height: 100vh;
@@ -28,11 +17,47 @@
   color: #61dafb;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.body{
+  background-image: url("basketball_background.jpg");
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+
+.grid-item {
+  padding: 20px;
+  text-align: center;
+}
+
+#basketball_court{
+  display: block;
+  margin: 0 auto;
+}
+
+h1{
+  font-family: "Verdana Pro Black"                                                          ;
+}
+
+button {
+  width: 200px;
+  background-color: orange;
+}
+
+img {
+  height: 23em;
+  width: 23em;
+}
+
+#basketball_court{
+  height: 18em;
+  width: 18em;
+}
+
+.teamname{
+  font-family: Impact;
+  font-size: 3em;
+  text-transform: uppercase;
 }
