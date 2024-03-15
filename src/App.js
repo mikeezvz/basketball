@@ -19,6 +19,8 @@ function App() {
 
     const handleClick = () => {
         ThrowTeam1();
+        setName("")
+        setOtherInput("")
     };
 
     const handleClick2 = () => {
@@ -26,9 +28,14 @@ function App() {
         }
     };
 
+    const handleLoeschenClick = () => {
+        Loeschen();
+    };
+
     const handleSubmit = (event) => {
         event.preventDefault();
         setTeamname1(name);
+        setName("")
     }
 
 
@@ -36,6 +43,7 @@ function App() {
     const handleOtherSubmit = (event) => {
         event.preventDefault();
         setTeamname2(otherInput);
+        setOtherInput("")
         // Handle second form submission logic here
     };
 
@@ -114,6 +122,15 @@ if (progress === 100) {
             }
         }
 
+    function Loeschen(){
+        setProgress1(0)
+        setProgress(0)
+        setScoreTeam1(0)
+        setScoreTeam2(0)
+        setIsThrown(0)
+        setEvents([])
+    }
+
     return (
         <div>
             <body>
@@ -187,7 +204,7 @@ if (progress === 100) {
                 <div className="grid-item">
                 <button onClick={handleClick}>Throw</button>
                     </div>
-                <div className="grid-item"></div>
+                <div className="grid-item"> <button onClick={handleLoeschenClick}>Löschen</button></div>
                 <div className="grid-item">
                     <button onClick={handleClick2}>Throw</button>
                 </div>
